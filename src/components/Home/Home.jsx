@@ -1,38 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      setSubmitted(true);
+      setEmail("");
+    }
+  };
+
+  // Generate floating shapes
+  const shapes = Array.from({ length: 15 });
+
   return (
-    <div className="mx-auto w-full max-w-7xl">
-      {/* Hero Section */}
-      <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-24 py-16 bg-gradient-to-r from-orange-100 via-white to-orange-50 shadow-lg">
-        {/* COMING SOON Overlay */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 bg-black/50 text-center px-4">
-          <h1 className="text-white text-5xl sm:text-7xl font-extrabold tracking-widest animate-pulse drop-shadow-lg">
-            🚀 COMING SOON 🚀
-          </h1>
-          <p className="text-white text-lg sm:text-2xl mt-4 font-medium tracking-wide">
-            Can’t Wait to Share It with You!
-          </p>
-        </div>
+    <div className="relative w-full h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden flex items-center justify-center text-white">
+      {/* Floating geometric shapes */}
+      {shapes.map((_, i) => (
+        <div
+          key={i}
+          className="absolute bg-orange-500 opacity-50 rounded-sm"
+          style={{
+            width: `${Math.random() * 30 + 10}px`,
+            height: `${Math.random() * 30 + 10}px`,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            animation: `float ${Math.random() * 6 + 4}s ease-in-out infinite`,
+            transform: `rotate(${Math.random() * 360}deg)`,
+          }}
+        ></div>
+      ))}
 
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full opacity-40">
-          <img
-            className="w-full h-full object-cover"
-            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt="Coming soon background"
-          />
-        </div>
-      </aside>
-
-      {/* Secondary Image */}
-      <div className="grid place-items-center sm:mt-20 mt-10">
+      {/* Abstract product illustration */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
         <img
-          className="sm:w-96 w-56 rounded-2xl shadow-md"
-          src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="business concept"
+          src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          alt="Abstract product illustration"
+          className="w-full h-full object-cover"
         />
       </div>
+
+      {/* Hero content */}
+      <div className="relative z-10 text-center px-6 sm:px-12 max-w-3xl">
+        <h1 className="text-5xl sm:text-7xl font-extrabold mb-4 tracking-wider drop-shadow-lg animate-pulse">
+          🚀 COMING SOON 🚀
+        </h1>
+        <p className="text-lg sm:text-2xl font-medium text-orange-400 mb-8">
+          Can’t Wait to Share It with You!
+        </p>
+
+        {/* Email notify form */}
+        {!submitted ? (
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row justify-center items-center gap-3"
+          >
+            <input
+              type="email"
+              required
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="px-4 py-3 rounded-lg w-64 sm:w-80 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-800 rounded-full font-semibold hover:from-orange-700 hover:to-orange-900 transform hover:-translate-y-0.5 transition duration-300 shadow-lg"
+            >
+              Notify Me
+            </button>
+          </form>
+        ) : (
+          <p className="text-green-400 font-medium mt-4">
+            Thank you! We'll notify you soon.
+          </p>
+        )}
+      </div>
+
+      {/* Floating shape animation */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+      `}</style>
     </div>
   );
 }
