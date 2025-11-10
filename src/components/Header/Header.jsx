@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 shadow-md backdrop-blur-md bg-white/70">
+    <header className="sticky top-0 z-50 shadow-md backdrop-blur-md bg-white/90">
       <nav className="border-gray-200 px-4 lg:px-8 py-3">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
@@ -19,8 +20,8 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Buttons */}
-          <div className="flex items-center space-x-3 lg:order-2">
+          {/* Desktop Buttons */}
+          <div className="hidden lg:flex items-center space-x-3 lg:order-2">
             <Link
               to="#"
               className="text-gray-800 hover:text-orange-700 font-medium rounded-lg text-sm px-4 py-2 transition duration-300"
@@ -36,75 +37,94 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Navigation Links */}
-          <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu"
+          {/* Hamburger Button for Mobile */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden text-gray-700 focus:outline-none"
           >
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={
+                  isOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16M4 18h16"
+                }
+              />
+            </svg>
+          </button>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-              
-              <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-all duration-200 ${
-                      isActive
-                        ? "text-orange-700 bg-orange-100"
-                        : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
-                    }`
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/about"
-                  className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-all duration-200 ${
-                      isActive
-                        ? "text-orange-700 bg-orange-100"
-                        : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
-                    }`
-                  }
-                >
-                  About
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/services"
-                  className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-all duration-200 ${
-                      isActive
-                        ? "text-orange-700 bg-orange-100"
-                        : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
-                    }`
-                  }
-                >
-                  Our Services
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-all duration-200 ${
-                      isActive
-                        ? "text-orange-700 bg-orange-100"
-                        : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
-                    }`
-                  }
-                >
-                  Contact
-                </NavLink>
-              </li>
+              {["/", "/about", "/services", "/contact"].map((path, idx) => {
+                const labels = ["Home", "About", "Our Services", "Contact"];
+                return (
+                  <li key={path}>
+                    <NavLink
+                      to={path}
+                      className={({ isActive }) =>
+                        `block py-2 px-3 rounded-md transition-all duration-200 ${
+                          isActive
+                            ? "text-orange-700 bg-orange-100"
+                            : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
+                        }`
+                      }
+                    >
+                      {labels[idx]}
+                    </NavLink>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="lg:hidden mt-3 bg-white shadow-md rounded-lg p-4 space-y-2">
+            {["/", "/about", "/services", "/contact"].map((path, idx) => {
+              const labels = ["Home", "About", "Our Services", "Contact"];
+              return (
+                <NavLink
+                  key={path}
+                  to={path}
+                  className={({ isActive }) =>
+                    `block py-2 px-3 rounded-md transition-all duration-200 ${
+                      isActive
+                        ? "text-orange-700 bg-orange-100"
+                        : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
+                    }`
+                  }
+                  onClick={() => setIsOpen(false)} // close menu after click
+                >
+                  {labels[idx]}
+                </NavLink>
+              );
+            })}
+
+            {/* Mobile Buttons */}
+            <Link
+              to="#"
+              className="block text-gray-800 hover:text-orange-700 font-medium rounded-lg text-sm px-4 py-2 text-center mt-2"
+            >
+              Log in
+            </Link>
+            <Link
+              to="#"
+              className="block text-white bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 font-semibold rounded-full text-sm px-5 py-2 text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 mt-1"
+            >
+              Get Started
+            </Link>
+          </div>
+        )}
       </nav>
     </header>
   );
