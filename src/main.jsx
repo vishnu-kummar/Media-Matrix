@@ -12,28 +12,7 @@ import Services from "./components/Service/Service.jsx";
 
 import {Route, RouterProvider,createBrowserRouter, createRoutesFromElements} from 'react-router-dom'
 
-// const router= createBrowserRouter([
-//   {
-//     path: '/',  // here / is top level elemnt aur iske andr nesting ho rhi hai jaise about
-//     element: <Layout/>,
-//     children: [
-//       {
-//         path:"",
-//         element: <Home/>
-//       },
-//       {
-//         path: "About",
-//         element: <About/>
-//       },
-//       {
-//         path: "Contact",
-//         element: <Contact/>
-//       }
-//     ]
-//   }
-// ])
 
-// or another way to create route
 
 const router = createBrowserRouter(
   createRoutesFromElements(
