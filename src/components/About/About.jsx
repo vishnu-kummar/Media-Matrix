@@ -1,339 +1,219 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { Link } from "react-router-dom"; // Import Link for navigation
+import { useEffect } from "react";
 export default function About() {
-    const [activeTab, setActiveTab] = useState(0);
 
-    const missionData = [
-        {
-            title: "Vision",
-            desc: "To be the global leader in product development for media and data intelligence platforms.",
-            icon: "🎯",
-            gradient: "from-blue-500 to-cyan-500"
-        },
-        {
-            title: "Innovation",
-            desc: "Driving continuous innovation through research and rapid prototyping, always prioritizing quality and user trust.",
-            icon: "💡",
-            gradient: "from-purple-500 to-pink-500"
-        },
-        {
-            title: "Excellence",
-            desc: "Committed to delivering exceptional quality in every product, ensuring customer satisfaction and long-term success.",
-            icon: "⭐",
-            gradient: "from-orange-500 to-red-500"
-        }
+useEffect(() => {
+        document.title = "About | Media Matrix";
+    }, []);
+
+    // Define the paths for the full list of client logos
+    const productClients = [
+        { name: "Hindustan Unilever", path: "/images/HUL-Logo.png" },
+        { name: "United Colors of Benetton", path: "/images/UCB-Logo.png" },
+        { name: "ITC Limited", path: "/images/ITC-logo.png" },
+        { name: "Dabur", path: "/images/Dabur-logo.png" },
+        { name: "Marico", path: "/images/Marico-Logo.png" },
+        { name: "Cadbury", path: "/images/Cadbury-Logo.jpg" },
+        { name: "Godrej", path: "/images/Godrej-Logo.jpg" },
+        { name: "Hindware", path: "/images/Hindware-Logo.png" },
+        { name: "Sunflame", path: "/images/Sunflame-logo.png" },
+        { name: "Somany", path: "/images/somany-logo.png" },
+        { name: "Borges", path: "/images/borges-logo.png" },
+        { name: "Cera", path: "/images/cera-logo.jpg" },
+        { name: "Zebronics", path: "/images/Zebronics-Logo.png" },
+        { name: "Evok", path: "/images/Evok-logo.jpg" },
+        { name: "Kaff", path: "/images/kaff-logo.jpg" },
+        { name: "Zebronics", path: "/images/electrolux-logo.jpg" },
     ];
 
-    const productData = [
-        {
-            title: "Product X: Data Dashboard",
-            desc: "A real-time data visualization platform giving clients instant, actionable insights into their market performance.",
-            img: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            features: ["Real-time Analytics", "Custom Reports", "AI Insights"]
-        },
-        {
-            title: "Product Y: AI Marketing Suite",
-            desc: "An AI-powered tool that automates content generation and campaign optimization across all major media channels.",
-            img: "https://images.pexels.com/photos/3184436/pexels-photo-3184436.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            features: ["Auto-Content", "Campaign Optimization", "Multi-Channel"]
-        }
+    const serviceClients = [
+        { name: "McDonald's", path: "/images/McDonald's-Logo.png" },
+        { name: "Radisson", path: "/images/Radisson-Logo.jpg" },
+        { name: "KFC", path: "/images/KFC-logo.png" },
+        { name: "Barbeque Nation", path: "/images/Barbeque-Nation-Logo.png" },
+        { name: "PVR 4700 BC", path: "/images/PVR-Logo.png" },
+        { name: "Kingdom of Dreams", path: "/images/KOD-Logo.jpg" },
+        { name: "affinity", path: "/images/affinity-logo.png" },
+        { name: "chaayos", path: "/images/chaayos-logo.png" },
+        { name: "country", path: "/images/Country-logo.png" },
+        { name: "cutStyle", path: "/images/cut-style-logo.jpg" },
+        { name: "service", path: "/images/service-logo.png" },
+        { name: "Worlds of wonder", path: "/images/worlds-of-wonder-logo.jpg" },
+        { name: "tattva", path: "/images/tattva-logo.jpg" },
+        { name: "Building", path: "/images/building-logo.png" },
     ];
 
-    const teamValues = [
-        { icon: "🚀", title: "Innovation First", desc: "We push boundaries" },
-        { icon: "🤝", title: "Customer Focused", desc: "Your success is ours" },
-        { icon: "💎", title: "Quality Driven", desc: "Excellence in every detail" },
-        { icon: "🌟", title: "Passion & Purpose", desc: "Driven by impact" }
-    ];
+    const attractiveFont = "font-sans"; 
 
     return (
-        <div className="min-h-screen bg-white">
-            {/* Hero Section */}
-            <div className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 overflow-hidden">
-                {/* Decorative Elements */}
-                <div className="absolute top-0 left-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-                <div className="absolute top-0 right-0 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-                <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div className={`min-h-screen bg-white ${attractiveFont}`}>
+            
+            {/* START: REPLICATED HERO BANNER */}
+            <div className="relative w-full h-96 bg-cover bg-center overflow-hidden" 
+                style={{ 
+                    backgroundImage: "url('/images/about-banner.png')",
+                    minHeight: '400px' 
+                }}>
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+                
+                {/* Pattern Overlay */}
+                <div className="absolute inset-0 opacity-10" style={{
+                    backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+                    backgroundSize: '30px 30px'
+                }}></div>
 
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-                    <div className="text-center">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full mb-6">
-                            <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
-                            </span>
-                            <span className="text-sm font-semibold text-purple-700">Innovation Driven by Passion</span>
+                <div className="relative h-full flex items-center max-w-screen-xl mx-auto px-4 lg:px-8">
+                    <div className="max-w-2xl animate-fadeIn">
+                        {/* Tag/Breadcrumb */}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/20 backdrop-blur-md border border-sky-300/30 rounded-full mb-6">
+                            <span className="w-2 h-2 bg-sky-400 rounded-full animate-pulse"></span>
+                            <span className="text-sm font-semibold text-white">Barter Experts </span>
                         </div>
-                        
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 bg-clip-text text-transparent">
-                            About Media Matrixx
+                        {/* H1 */}
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-tight drop-shadow-2xl">
+                            About Media Matrix
                         </h1>
-                        
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-                            Building cutting-edge solutions that redefine digital engagement. We're passionate developers driving innovation in marketing and data analysis.
+                        {/* P tag */}
+                        <p className="text-xl text-gray-200 mb-6">
+                            Your Strategic Partner for Barter Media Solutions
                         </p>
+                    </div>
+                </div>
+            </div>
+            {/* END: REPLICATED HERO BANNER */}
 
-                        {/* Stats */}
-                        <div className="flex flex-wrap justify-center gap-8 mt-12">
-                            {[
-                                { value: "50+", label: "Products Launched" },
-                                { value: "10K+", label: "Happy Clients" },
-                                { value: "15+", label: "Countries" },
-                                { value: "99%", label: "Satisfaction" }
-                            ].map((stat, index) => (
-                                <div key={index} className="text-center">
-                                    <div className="text-3xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                                        {stat.value}
-                                    </div>
-                                    <div className="text-sm text-gray-600 font-semibold">{stat.label}</div>
-                                </div>
-                            ))}
+            <div className="bg-gradient-to-b from-sky-50 to-white">
+                <div className="max-w-screen-xl mx-auto px-4 lg:px-8 py-20">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-200/50 text-sky-800 font-medium tracking-wide mb-6 shadow-md">
+                            <span className="text-xl">🤝</span> About Media Matrix
                         </div>
+                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">We make **barter** work for brands.</h2>
+                        <p className="text-xl text-gray-700 leading-relaxed">
+                            Media Matrix is an **Advertising company** that helps brands **optimize their existing products/services** and use them to buy **Media solutions (ATL/BTL) on a Barter basis**.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            {/* Story Section */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Image */}
-                    <div className="relative group">
-                        <div className="absolute -inset-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded-3xl opacity-30 group-hover:opacity-50 blur-xl transition-all duration-300"></div>
-                        <img
-                            src="https://images.pexels.com/photos/3184305/pexels-photo-3184305.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                            alt="Team working together"
-                            className="relative rounded-3xl shadow-2xl w-full h-auto transform group-hover:scale-[1.02] transition-transform duration-300"
-                        />
+            <div className="max-w-screen-xl mx-auto px-4 lg:px-8 py-16">
+                <div className="grid lg:grid-cols-3 gap-12">
+                    <div className="lg:col-span-2 space-y-8">
+                        <h3 className="text-3xl font-bold text-gray-900 border-b pb-2">Our Goal & Expertise 🎯</h3>
+                        <p className="text-lg text-gray-700">Our goal is to provide an innovative tool allowing companies to utilize their **existing excess inventory/services** for advertising, rather than selling it at discounted market rates. This optimally increases the reach of the product through advertisement on a **Barter basis**. We have **over 14 years of experience** in the barter industry, ensuring expertise you can trust.</p>
+
+                        <h4 className="text-2xl font-bold text-sky-700 mt-10">Why brands choose barter:</h4>
+                        <ul className="list-disc pl-6 text-lg text-gray-700 space-y-3 mt-4">
+                            <li>**Monetize unsold inventory** without resorting to deep discounting.</li>
+                            <li>Secure premium media placements using the **full value** of your product/service.</li>
+                            <li>**Increase the reach** of the product through effective Barter Advertisement campaigns.</li>
+                            <li>Specializing in media solutions across India in **cash/barter** arrangements.</li>
+                        </ul>
                     </div>
 
-                    {/* Content */}
-                    <div className="space-y-6">
-                        <div className="inline-block px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full">
-                            <span className="text-sm font-semibold text-purple-700">Our Story</span>
-                        </div>
-                        
-                        <h2 className="text-4xl md:text-5xl font-black text-gray-900">
-                            Innovation Driven by Passion
-                        </h2>
-                        
-                        <p className="text-lg text-gray-600 leading-relaxed">
-                            <strong className="text-gray-900">Media Matrixx is a product-based company</strong> committed to building
-                            cutting-edge solutions that redefine digital engagement. Our passionate developers
-                            drive innovation in marketing and data analysis.
-                        </p>
-                        
-                        <p className="text-gray-600 leading-relaxed">
-                            We believe in the power of technology to simplify complexity. Every product we launch
-                            is designed with user experience and scalability at its core, ensuring our clients
-                            always stay ahead of the curve.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4 pt-4">
-                            <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full">
-                                <span className="text-green-600">✓</span>
-                                <span className="text-sm font-semibold text-green-700">User-Centric Design</span>
+                    <div className="bg-sky-50 rounded-xl p-8 shadow-xl border border-sky-200 h-fit">
+                        <h4 className="text-2xl font-bold text-gray-900 mb-5 border-b pb-2 text-center">Core Values ✨</h4>
+                        <div className="space-y-4 text-lg text-gray-800">
+                            <div className="flex items-start gap-3">
+                                <span className="text-sky-600 font-extrabold text-xl">✓</span>
+                                <div><strong>Client-Centric</strong> — Committed to serving clients **transparently and efficiently**.</div>
                             </div>
-                            <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full">
-                                <span className="text-blue-600">✓</span>
-                                <span className="text-sm font-semibold text-blue-700">Scalable Solutions</span>
+                            <div className="flex items-start gap-3">
+                                <span className="text-sky-600 font-extrabold text-xl">✓</span>
+                                <div><strong>Experienced</strong> — **14+ years** of Barter Expertise in the Indian market.</div>
                             </div>
-                            <div className="flex items-center gap-2 px-4 py-2 bg-purple-50 rounded-full">
-                                <span className="text-purple-600">✓</span>
-                                <span className="text-sm font-semibold text-purple-700">Continuous Innovation</span>
+                            <div className="flex items-start gap-3">
+                                <span className="text-sky-600 font-extrabold text-xl">✓</span>
+                                <div><strong>Innovative</strong> — Creative media solutions and strategic sampling programs.</div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <span className="text-sky-600 font-extrabold text-xl">✓</span>
+                                <div><strong>Growing Presence</strong> — Main office in **Delhi NCR** with clear future expansion plans.</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Mission Section */}
-            <div className="bg-gradient-to-br from-gray-50 to-purple-50/30 py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                            Our Core Mission
-                        </h2>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            Guiding principles that drive everything we do
-                        </p>
-                    </div>
+                <div className="mt-16 bg-gradient-to-tr from-sky-100 to-white rounded-2xl p-10 shadow-2xl border border-sky-300">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">Our Seamless Barter Workflow 🔄</h3>
+                    <p className="text-lg text-gray-700 max-w-4xl mx-auto mb-8 text-center">Media Matrix manages the entire transaction process from initial assessment to final execution, ensuring a smooth and hassle-free experience.</p>
+                    <ol className="relative border-l border-sky-400 ml-4 space-y-6">
+                        <li className="mb-8 ml-6">
+                            <span className="absolute flex items-center justify-center w-8 h-8 bg-sky-600 rounded-full -left-4 ring-8 ring-white shadow-md text-white font-bold">1</span>
+                            <h4 className="text-xl font-semibold text-gray-900">Understanding Basics of Media Barter</h4>
+                            <p className="text-gray-700">Detailed explanation of the financial and reach benefits over traditional cash-based media buying.</p>
+                        </li>
+                        <li className="mb-8 ml-6">
+                            <span className="absolute flex items-center justify-center w-8 h-8 bg-sky-600 rounded-full -left-4 ring-8 ring-white shadow-md text-white font-bold">2</span>
+                            <h4 className="text-xl font-semibold text-gray-900">Finetuning the Requirements</h4>
+                            <p className="text-gray-700">We specify the client's products/services for liquidation and identify appropriate, high-value media options for their brand.</p>
+                        </li>
+                        <li className="mb-8 ml-6">
+                            <span className="absolute flex items-center justify-center w-8 h-8 bg-sky-600 rounded-full -left-4 ring-8 ring-white shadow-md text-white font-bold">3</span>
+                            <h4 className="text-xl font-semibold text-gray-900">Contract Agreement</h4>
+                            <p className="text-gray-700">A clear and transparent contract is signed between the client and Media Matrix, outlining all terms and deliverables.</p>
+                        </li>
+                        <li className="mb-8 ml-6">
+                            <span className="absolute flex items-center justify-center w-8 h-8 bg-sky-600 rounded-full -left-4 ring-8 ring-white shadow-md text-white font-bold">4</span>
+                            <h4 className="text-xl font-semibold text-gray-900">Network Transactions</h4>
+                            <p className="text-gray-700">Clients buy and sell media/products/services within our secure, managed network on a Barter basis, maximizing product value.</p>
+                        </li>
+                        <li className="ml-6">
+                            <span className="absolute flex items-center justify-center w-8 h-8 bg-sky-600 rounded-full -left-4 ring-8 ring-white shadow-md text-white font-bold">5</span>
+                            <h4 className="text-xl font-semibold text-gray-900">Accounting & Fees</h4>
+                            <p className="text-gray-700">Media Matrix manages all complex accounting. A simple **10% facilitation charge** applies only to media purchases.</p>
+                        </li>
+                    </ol>
+                </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {missionData.map((item, index) => (
-                            <div
-                                key={index}
-                                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
-                                style={{
-                                    animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
-                                }}
+                <div className="mt-20">
+                    <h3 className="text-3xl font-black text-gray-900 mb-4 text-center">Our Valued Clients 🏆</h3>
+                    <p className="text-center text-lg text-gray-700 max-w-4xl mx-auto mb-12">
+                        We proudly partner with leading brands across various industries, showcasing our ability to deliver effective barter solutions for top companies.
+                    </p>
+
+                    {/* Attractive Client Logos - Updated styling for Product Clients (Bigger and always colored) */}
+                    <h4 className="text-2xl font-bold text-gray-800 mt-6 mb-6 border-b pb-2">Products Category Clients</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-center items-center">
+                        {productClients.map((client) => (
+                            <div 
+                                key={client.name} 
+                                className="h-24 flex items-center justify-center bg-white rounded-xl p-4 shadow-lg border border-gray-100 hover:shadow-sky-300 transition-shadow duration-300 transform hover:scale-105"
+                                title={client.name}
                             >
-                                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                                    {item.icon}
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-4">{item.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                                <img src={client.path} alt={`${client.name} Logo`} className="max-h-full max-w-full object-contain transition duration-300" />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Attractive Client Logos - Updated styling for Services Clients (Bigger and always colored) */}
+                    <h4 className="text-2xl font-bold text-gray-800 mt-12 mb-6 border-b pb-2">Services Category Clients</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-center items-center">
+                        {serviceClients.map((client) => (
+                            <div 
+                                key={client.name} 
+                                className="h-24 flex items-center justify-center bg-white rounded-xl p-4 shadow-lg border border-gray-100 hover:shadow-sky-300 transition-shadow duration-300 transform hover:scale-105"
+                                title={client.name}
+                            >
+                                <img src={client.path} alt={`${client.name} Logo`} className="max-h-full max-w-full object-contain transition duration-300" />
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* Products Section */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                        Our Key Products
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Innovative solutions designed to transform your business
-                    </p>
-                </div>
-
-                <div className="space-y-8">
-                    {productData.map((product, index) => (
-                        <div
-                            key={index}
-                            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
-                            style={{
-                                animation: `fadeInUp 0.6s ease-out ${index * 0.2}s both`
-                            }}
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                {/* Image */}
-                                <div className="relative h-64 lg:h-auto overflow-hidden">
-                                    <img
-                                        src={product.img}
-                                        alt={product.title}
-                                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-8 flex flex-col justify-center">
-                                    <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300">
-                                        {product.title}
-                                    </h3>
-                                    <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                                        {product.desc}
-                                    </p>
-
-                                    {/* Features */}
-                                    <div className="flex flex-wrap gap-2 mb-6">
-                                        {product.features.map((feature, idx) => (
-                                            <span
-                                                key={idx}
-                                                className="px-4 py-2 bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 text-sm font-semibold rounded-full"
-                                            >
-                                                {feature}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <button
-                                        onClick={() => alert("This feature will be available soon.")}
-                                        className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-bold group-hover:gap-3 transition-all duration-300"
-                                    >
-                                        <span>Learn More</span>
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Team Values */}
-            <div className="bg-gradient-to-br from-gray-50 to-purple-50/30 py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                            Our Values
-                        </h2>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            What makes us different
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {teamValues.map((value, index) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-center"
-                            >
-                                <div className="text-5xl mb-4">{value.icon}</div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h3>
-                                <p className="text-gray-600 text-sm">{value.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* CTA Section */}
-            <div className="bg-gradient-to-br from-purple-600 to-pink-600 py-20">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-                        Ready to Build With Us?
-                    </h2>
-                    <p className="text-xl text-purple-100 mb-8">
-                        Connect with our team to discuss your next big product idea.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a
-                            href="/contact"
-                            className="inline-block px-8 py-4 bg-white hover:bg-gray-50 text-purple-600 font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                        >
-                            Get in Touch
-                        </a>
-                        <button className="px-8 py-4 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                            View Our Work
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Animations */}
+     
             <style>{`
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
                 }
 
-                @keyframes blob {
-                    0% {
-                        transform: translate(0px, 0px) scale(1);
-                    }
-                    33% {
-                        transform: translate(30px, -50px) scale(1.1);
-                    }
-                    66% {
-                        transform: translate(-20px, 20px) scale(0.9);
-                    }
-                    100% {
-                        transform: translate(0px, 0px) scale(1);
-                    }
-                }
-
-                .animate-blob {
-                    animation: blob 7s infinite;
-                }
-
-                .animation-delay-2000 {
-                    animation-delay: 2s;
-                }
-
-                .animation-delay-4000 {
-                    animation-delay: 4s;
+                .animate-fadeIn {
+                    animation: fadeIn 0.5s ease-out;
                 }
             `}</style>
         </div>

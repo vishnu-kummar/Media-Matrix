@@ -5,124 +5,138 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 shadow-md backdrop-blur-md bg-white/90">
-      <nav className="border-gray-200 px-4 lg:px-8 py-3">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b shadow-md">
+      <nav className="max-w-screen-xl mx-auto px-4 lg:px-8 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo Container */}
+          <Link to="/" className="flex items-center gap-3">
             <img
-              src="https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&w=100"
-              className="h-12 rounded-full shadow-sm border border-orange-200"
-              alt="Logo"
+              src="/images/logo.jpg"
+              alt="MediaMatrix Logo"
+              className="h-20 object-contain rounded-md shadow-sm border border-gray-200"
             />
-            <span className="text-xl font-bold text-orange-700 tracking-wide">
-              MediaMatrix
-            </span>
+            <div className="leading-tight">
+              <div className="text-2xl font-extrabold text-sky-800">
+                MediaMatrix
+              </div>
+              <div className="text-base text-gray-500 -mt-0.5">
+                Barter Media Solutions
+              </div>
+            </div>
           </Link>
 
-          {/* Desktop Buttons */}
-          <div className="hidden lg:flex items-center space-x-3 lg:order-2">
-            <Link
-              to="#"
-              className="text-gray-800 hover:text-orange-700 font-medium rounded-lg text-sm px-4 py-2 transition duration-300"
-            >
-              Log in
-            </Link>
+          {/* Desktop nav */}
+          <div className="hidden lg:flex lg:items-center lg:gap-4">
+            <ul className="flex items-center gap-1">
+              {[
+                { to: "/", label: "Home" },
+                { to: "/about", label: "About" },
+                { to: "/services", label: "Services" },
+                { to: "/contact", label: "Contact" }
+              ].map((link) => (
+                <li key={link.to}>
+                  <NavLink
+                    to={link.to}
+                    className={({ isActive }) =>
+                      `px-4 py-2.5 rounded-lg text-base font-medium transition ${
+                        isActive
+                          ? "text-sky-800 bg-sky-50"
+                          : "text-gray-700 hover:text-sky-700 hover:bg-sky-50"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
 
-            <Link
-              to="#"
-              className="text-white bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 focus:ring-4 focus:ring-orange-300 font-semibold rounded-full text-sm px-5 py-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300"
-            >
-              Get Started
-            </Link>
+            <div className="flex items-center gap-3">
+              {/* <Link
+                to="#"
+                className="text-base text-gray-700 hover:text-sky-700 px-4 py-2.5 rounded-lg transition duration-300"
+              >
+                Log in
+              </Link> */}
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-600 to-orange-800 text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 text-base"
+              >
+                Get Started
+              </Link>
+            </div>
           </div>
 
-          {/* Hamburger Button for Mobile */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-gray-700 focus:outline-none"
-          >
-            <svg
-              className="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Mobile toggle */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+              className="p-2 rounded-md text-gray-700 hover:text-sky-700"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={
-                  isOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M4 6h16M4 12h16M4 18h16"
-                }
-              />
-            </svg>
-          </button>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-              {["/", "/about", "/services", "/contact"].map((path, idx) => {
-                const labels = ["Home", "About", "Our Services", "Contact"];
-                return (
-                  <li key={path}>
-                    <NavLink
-                      to={path}
-                      className={({ isActive }) =>
-                        `block py-2 px-3 rounded-md transition-all duration-200 ${
-                          isActive
-                            ? "text-orange-700 bg-orange-100"
-                            : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
-                        }`
-                      }
-                    >
-                      {labels[idx]}
-                    </NavLink>
-                  </li>
-                );
-              })}
-            </ul>
+              <svg
+                className="w-7 h-7"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={
+                    isOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
+                />
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         {isOpen && (
-          <div className="lg:hidden mt-3 bg-white shadow-md rounded-lg p-4 space-y-2">
-            {["/", "/about", "/services", "/contact"].map((path, idx) => {
-              const labels = ["Home", "About", "Our Services", "Contact"];
-              return (
+          <div className="lg:hidden mt-3 bg-white rounded-lg shadow-md p-4 border">
+            <ul className="flex flex-col gap-1">
+              {[
+                { to: "/", label: "Home" },
+                { to: "/about", label: "About" },
+                { to: "/services", label: "Services" },
+                { to: "/contact", label: "Contact" }
+              ].map((link) => (
                 <NavLink
-                  key={path}
-                  to={path}
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-all duration-200 ${
+                    `block px-4 py-3 rounded-lg text-base font-medium transition ${
                       isActive
-                        ? "text-orange-700 bg-orange-100"
-                        : "text-gray-700 hover:text-orange-700 hover:bg-orange-50"
+                        ? "text-sky-800 bg-sky-50"
+                        : "text-gray-700 hover:text-sky-700 hover:bg-sky-50"
                     }`
                   }
-                  onClick={() => setIsOpen(false)} // close menu after click
                 >
-                  {labels[idx]}
+                  {link.label}
                 </NavLink>
-              );
-            })}
+              ))}
+            </ul>
 
-            {/* Mobile Buttons */}
-            <Link
-              to="#"
-              className="block text-gray-800 hover:text-orange-700 font-medium rounded-lg text-sm px-4 py-2 text-center mt-2"
-            >
-              Log in
-            </Link>
-            <Link
-              to="#"
-              className="block text-white bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 font-semibold rounded-full text-sm px-5 py-2 text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 mt-1"
-            >
-              Get Started
-            </Link>
+            <div className="mt-3 flex flex-col gap-2">
+              <Link
+                to="#"
+                className="block text-gray-700 py-2 rounded-md text-center text-base"
+              >
+                Log in
+              </Link>
+              <Link
+                to="/contact"
+                className="block text-white bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 font-semibold rounded-full text-sm px-5 py-2 text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300"
+              >
+                Get Started
+              </Link>
+            </div>
           </div>
         )}
       </nav>

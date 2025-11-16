@@ -1,90 +1,249 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; 
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail("");
-    }
-  };
 
-  const shapes = Array.from({ length: 12 });
+  
+    // Only 'counter' state is kept
+    const [counter, setCounter] = useState({ clients: 0, years: 0, media: 0 });
 
-  return (
-    <div className="relative w-full h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden flex flex-col items-center justify-center text-white px-4 sm:px-12">
-      {/* Floating geometric shapes */}
-      {shapes.map((_, i) => (
-        <div
-          key={i}
-          className="absolute bg-orange-500 opacity-50 rounded-sm"
-          style={{
-            width: `${Math.random() * 25 + 10}px`,
-            height: `${Math.random() * 25 + 10}px`,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            animation: `float ${Math.random() * 6 + 4}s ease-in-out infinite`,
-            transform: `rotate(${Math.random() * 360}deg)`,
-          }}
-        ></div>
-      ))}
+    const mediaPartners = [
+        "Times of India", "Hindustan Times", "Zee TV", "Radio City", "PVR Cinemas", "Delhi Metro"
+    ];
 
-      {/* Abstract product illustration */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-        <img
-          src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="Abstract product illustration"
-          className="w-full h-full object-cover"
-        />
-      </div>
+    // Animated counter effect
+    useEffect(() => {
+        const duration = 2000;
+        const steps = 60;
+        const interval = duration / steps;
 
-      {/* Hero content */}
-      <div className="relative z-10 text-center max-w-xl">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-wider drop-shadow-lg animate-pulse">
-          🚀 COMING SOON 🚀
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl font-medium text-orange-400 mb-8">
-          Can’t Wait to Share It with You!
-        </p>
+        const targets = { clients: 500, years: 14, media: 50 };
+        let current = { clients: 0, years: 0, media: 0 };
 
-        {/* Email notify form */}
-        {!submitted ? (
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row justify-center items-center gap-3"
-          >
-            <input
-              type="email"
-              required
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="px-4 py-3 rounded-lg w-full sm:w-72 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-800 rounded-full font-semibold hover:from-orange-700 hover:to-orange-900 transform hover:-translate-y-0.5 transition duration-300 shadow-lg w-full sm:w-auto"
-            >
-              Notify Me
-            </button>
-          </form>
-        ) : (
-          <p className="text-green-400 font-medium mt-4">
-            Thank you! We'll notify you soon.
-          </p>
-        )}
-      </div>
+        const timer = setInterval(() => {
+            current.clients = Math.min(current.clients + Math.ceil(targets.clients / steps), targets.clients);
+            current.years = Math.min(current.years + Math.ceil(targets.years / steps), targets.years);
+            current.media = Math.min(current.media + Math.ceil(targets.media / steps), targets.media);
+            
+            setCounter({ ...current });
 
-      {/* Floating shape animation */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(180deg); }
-        }
-      `}</style>
-    </div>
-  );
+            if (current.clients >= targets.clients) clearInterval(timer);
+        }, interval);
+
+        return () => clearInterval(timer);
+    }, []);
+
+    // Removed: Auto-advance testimonials useEffect
+
+    return (
+        <div className="bg-white min-h-screen">
+            {/* Hero Section - Enhanced */}
+            <div className="relative bg-gradient-to-br from-sky-50 via-white to-cyan-50 overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-5" style={{
+                    backgroundImage: 'radial-gradient(circle, #0ea5e9 1px, transparent 1px)',
+                    backgroundSize: '40px 40px'
+                }}></div>
+
+                <div className="max-w-screen-xl mx-auto px-4 lg:px-8 py-20 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Left Content */}
+                        <div className="animate-fadeInLeft">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-sky-100 to-cyan-100 text-sky-700 mb-6 text-sm font-bold shadow-sm">
+                                <span className="w-2 h-2 bg-sky-500 rounded-full animate-pulse"></span>
+                                Trusted Media Barter Partner 
+                            </div>
+
+                            <h1 className="text-5xl md:text-6xl font-black text-sky-900 leading-tight mb-6">
+                                Convert Unsold Inventory into 
+                                <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                                    Media Advantage
+                                </span>
+                            </h1>
+
+                            {/* UPDATED COMPANY OVERVIEW */}
+                            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                                An Advertising company which helps Brands in optimizing their existing products/services and use it to buy Media solutions (ATL/BTL) on Barter. We specialize in providing Media solutions across India in the form of cash/barter. Our goal is to provide an innovative tool to companies where they use their existing excess inventory/services rather than selling at a discounted rates in market to optimally using it to increase the reach of the product through Advertisement on Barter basis.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4 mb-10">
+                                <Link 
+                                    to="/contact" 
+                                    className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                                >
+                                    <span>Get Free Consultation</span>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </Link>
+                                <Link 
+                                    to="/services" 
+                                    className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-sky-300 text-sky-800 font-bold hover:bg-sky-50 transition-all duration-300"
+                                >
+                                    <span>View Services</span>
+                                </Link>
+                            </div>
+
+                            {/* Key Stats with Animation */}
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                {[
+                                    { label: "Experience", value: `${counter.years}+ yrs`, icon: "⭐" },
+                                    { label: "Pan-India", value: "Presence", icon: "🗺️" },
+                                    { label: "Happy Clients", value: `${counter.clients}+`, icon: "🤝" },
+                                    { label: "Facilitation", value: "10% fee", icon: "💰" }
+                                ].map((s, idx) => (
+                                    <div 
+                                        key={s.label} 
+                                        className="bg-white p-4 rounded-xl shadow-md border border-sky-100 hover:shadow-lg hover:border-sky-300 transition-all duration-300 transform hover:-translate-y-1"
+                                        style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both` }}
+                                    >
+                                        <div className="text-2xl mb-1">{s.icon}</div>
+                                        <div className="text-xs text-gray-500 mb-1">{s.label}</div>
+                                        <div className="font-black text-sky-800 text-lg">{s.value}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Right Content - Media Types Grid */}
+                        <div className="animate-fadeInRight flex items-center justify-center py-10 lg:py-0">
+                            <div className="grid grid-cols-2 gap-4">
+                                {[
+                                    { title: "Print Media", list: "Newspaper • Magazines • Journals", icon: "📰", gradient: "from-gray-500 to-slate-600" },
+                                    { title: "Broadcast", list: "TV • Radio • Digital", icon: "📡", gradient: "from-sky-500 to-cyan-500" },
+                                    { title: "OOH & Transit", list: "Metro • Airport • Hoardings", icon: "🚇", gradient: "from-orange-500 to-amber-500" },
+                                    { title: "Cinema", list: "PVR • INOX • Cinepolis", icon: "🎬", gradient: "from-purple-500 to-pink-500" }
+                                ].map((type, idx) => (
+                                    <div 
+                                        key={type.title}
+                                        className="bg-white rounded-2xl p-5 shadow-md border border-sky-100 hover:shadow-xl hover:border-sky-300 transition-all duration-300 transform hover:-translate-y-1"
+                                        style={{ animation: `fadeInUp 0.6s ease-out ${0.8 + idx * 0.1}s both` }}
+                                    >
+                                        <div className={`w-12 h-12 bg-gradient-to-br ${type.gradient} rounded-xl flex items-center justify-center text-2xl mb-3 shadow-md`}>
+                                            {type.icon}
+                                        </div>
+                                        <div className="text-xs text-gray-500 mb-1">{type.title}</div>
+                                        <div className="font-bold text-sky-800 text-sm leading-tight">{type.list}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Benefits Section */}
+            <div className="py-20 bg-white">
+                <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                            Why Choose Media Barter?
+                        </h2>
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                            Transform your excess inventory into strategic media advantage
+                        </p>
+                        <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-cyan-500 mx-auto mt-6 rounded-full"></div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            { icon: "💰", title: "Preserve Cash Flow", desc: "No upfront cash required for media buying", color: "sky" },
+                            { icon: "📈", title: "Maximize ROI", desc: "Get better value than traditional discounting", color: "cyan" },
+                            { icon: "🎯", title: "Strategic Reach", desc: "Access premium media placements nationwide", color: "orange" },
+                            { icon: "⚡", title: "Quick Execution", desc: "Fast turnaround with transparent process", color: "purple" }
+                        ].map((benefit, idx) => (
+                            <div 
+                                key={benefit.title}
+                                className={`group bg-gradient-to-br from-${benefit.color}-50 to-white rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-${benefit.color}-100`}
+                                style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both` }}
+                            >
+                                <div className="text-5xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                                    {benefit.icon}
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                                <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Media Partners */}
+            <div className="py-16 bg-white">
+                <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                    <div className="text-center mb-10">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Our Media Partners</h3>
+                        <p className="text-gray-600">Working with India's leading media outlets</p>
+                    </div>
+                    <div className="flex flex-wrap justify-center items-center gap-8">
+                        {mediaPartners.map((partner, idx) => (
+                            <div 
+                                key={partner}
+                                className="px-6 py-3 bg-gradient-to-r from-sky-50 to-cyan-50 rounded-xl border border-sky-200 font-semibold text-sky-700 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                                style={{ animation: `fadeIn 0.6s ease-out ${idx * 0.1}s both` }}
+                            >
+                                {partner}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+        
+
+            {/* Styles */}
+            <style>{`
+                @keyframes fadeInLeft {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                @keyframes fadeInRight {
+                    from {
+                        opacity: 0;
+                        transform: translateX(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+
+                .animate-fadeInLeft {
+                    animation: fadeInLeft 0.8s ease-out;
+                }
+
+                .animate-fadeInRight {
+                    animation: fadeInRight 0.8s ease-out;
+                }
+            `}</style>
+        </div>
+    );
 }
