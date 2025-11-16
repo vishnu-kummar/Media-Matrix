@@ -24,7 +24,7 @@ export default function Home() {
         { name: "Cera", path: "/images/cera-logo.jpg" },
         { name: "Zebronics", path: "/images/Zebronics-Logo.png" },
         { name: "Evok", path: "/images/Evok-logo.jpg" },
-        { name: "Kaff", path: "/images/kaff-logo.jpg" },
+        { name: "Kaff", path: "/images/kaff-logo.png" },
         { name: "Zebronics", path: "/images/electrolux-logo.jpg" },
     ];
 
@@ -111,12 +111,11 @@ export default function Home() {
                             </div>
                             {/* Key Stats */}
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                {[
-                                    { label: "Experience", value: `${counter.years}+ yrs`, icon: "⭐" },
-                                    { label: "Pan-India", value: "Presence", icon: "🗺️" },
-                                    { label: "Happy Clients", value: `${counter.clients}+`, icon: "🤝" },
-                                    { label: "Facilitation", value: "10% fee", icon: "💰" }
-                                ].map((s, idx) => (
+                                {[{ label: "Experience", value: `${counter.years}+ yrs`, icon: "⭐" },
+                                  { label: "Pan-India", value: "Presence", icon: "🗺️" },
+                                  { label: "Happy Clients", value: `${counter.clients}+`, icon: "🤝" },
+                                  { label: "Facilitation", value: "10% fee", icon: "💰" }]
+                                  .map((s, idx) => (
                                     <div key={s.label} className="bg-white p-4 rounded-xl shadow-md border border-sky-100 hover:shadow-lg hover:border-sky-300 transition-all duration-300 transform hover:-translate-y-1" style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both` }}>
                                         <div className="text-2xl mb-1">{s.icon}</div>
                                         <div className="text-xs text-gray-500 mb-1">{s.label}</div>
@@ -125,15 +124,15 @@ export default function Home() {
                                 ))}
                             </div>
                         </div>
-                        {/* Right content grid remains visible always */}
+
+                        {/* Right content grid */}
                         <div className="animate-fadeInRight flex items-center justify-center py-10 lg:py-0">
                             <div className="grid grid-cols-2 gap-4">
-                                {[
-                                    { title: "Print Media", list: "Newspaper • Magazines • Journals", icon: "📰", gradient: "from-gray-500 to-slate-600" },
-                                    { title: "Broadcast", list: "TV • Radio • Digital", icon: "📡", gradient: "from-sky-500 to-cyan-500" },
-                                    { title: "OOH & Transit", list: "Metro • Airport • Hoardings", icon: "🚇", gradient: "from-orange-500 to-amber-500" },
-                                    { title: "Cinema", list: "PVR • INOX • Cinepolis", icon: "🎬", gradient: "from-purple-500 to-pink-500" }
-                                ].map((type, idx) => (
+                                {[{ title: "Print Media", list: "Newspaper • Magazines • Journals", icon: "📰", gradient: "from-gray-500 to-slate-600" },
+                                  { title: "Broadcast", list: "TV • Radio • Digital", icon: "📡", gradient: "from-sky-500 to-cyan-500" },
+                                  { title: "OOH & Transit", list: "Metro • Airport • Hoardings", icon: "🚇", gradient: "from-orange-500 to-amber-500" },
+                                  { title: "Cinema", list: "PVR • INOX • Cinepolis", icon: "🎬", gradient: "from-purple-500 to-pink-500" }]
+                                  .map((type, idx) => (
                                     <div key={type.title} className="bg-white rounded-2xl p-5 shadow-md border border-sky-100 hover:shadow-xl hover:border-sky-300 transition-all duration-300 transform hover:-translate-y-1" style={{ animation: `fadeInUp 0.6s ease-out ${0.8 + idx * 0.1}s both` }}>
                                         <div className={`w-12 h-12 bg-gradient-to-br ${type.gradient} rounded-xl flex items-center justify-center text-2xl mb-3 shadow-md`}>{type.icon}</div>
                                         <div className="text-xs text-gray-500 mb-1">{type.title}</div>
@@ -146,7 +145,7 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Why Choose Media Barter - Hide on mobile */}
+            {/* Why Choose Media Barter - desktop only */}
             {!isMobile && (
             <div className="py-20 bg-white">
                 <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
@@ -156,12 +155,11 @@ export default function Home() {
                         <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-cyan-500 mx-auto mt-6 rounded-full"></div>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[
-                            { icon: "💰", title: "Preserve Cash Flow", desc: "No upfront cash required for media buying", color: "sky" },
-                            { icon: "📈", title: "Maximize ROI", desc: "Get better value than traditional discounting", color: "cyan" },
-                            { icon: "🎯", title: "Strategic Reach", desc: "Access premium media placements nationwide", color: "orange" },
-                            { icon: "⚡", title: "Quick Execution", desc: "Fast turnaround with transparent process", color: "purple" }
-                        ].map((benefit, idx) => (
+                        {[{ icon: "💰", title: "Preserve Cash Flow", desc: "No upfront cash required for media buying", color: "sky" },
+                          { icon: "📈", title: "Maximize ROI", desc: "Get better value than traditional discounting", color: "cyan" },
+                          { icon: "🎯", title: "Strategic Reach", desc: "Access premium media placements nationwide", color: "orange" },
+                          { icon: "⚡", title: "Quick Execution", desc: "Fast turnaround with transparent process", color: "purple" }]
+                          .map((benefit, idx) => (
                             <div key={benefit.title} className={`group bg-gradient-to-br from-${benefit.color}-50 to-white rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-${benefit.color}-100`} style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both` }}>
                                 <div className="text-5xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">{benefit.icon}</div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
@@ -189,7 +187,7 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Mobile-only: Insert About (Our Valued Clients), Services, Contact after Media Partners */}
+            {/* Mobile-only: Our Valued Clients, Services intro, Contact */}
             {isMobile && (
             <>
                 {/* Our Valued Clients */}
@@ -204,17 +202,26 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Services and Contact - can embed your Service.jsx & Contact.jsx sections here for mobile */}
+                {/* Services intro only */}
                 <div className="py-16 bg-white">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Services</h3>
-                    {/* Add your Service.jsx content here as mobile version */}
+                    <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Services</h3>
+                        <p className="text-gray-700 text-lg text-center">
+                            We provide a wide range of media barter solutions across Print, Broadcast, Cinema, OOH, and Digital platforms.
+                            Our services help brands leverage their existing inventory and resources to maximize media reach and ROI.
+                        </p>
+                    </div>
                 </div>
 
+                {/* Full Contact section */}
                 <div className="py-16 bg-white">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Contact Us</h3>
-                    {/* Add your Contact.jsx content here as mobile version */}
+                    <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Contact Us</h3>
+                        {/* Paste full Contact.jsx content here */}
+                    </div>
                 </div>
-            </>)}
+            </>
+            )}
 
             {/* Styles */}
             <style>{`
