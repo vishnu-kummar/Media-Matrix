@@ -26,7 +26,7 @@ export default function Home() {
         { name: "Zebronics", path: "/images/Zebronics-Logo.png" },
         { name: "Evok", path: "/images/Evok-logo.jpg" },
         { name: "Kaff", path: "/images/kaff-logo.png" },
-        { name: "Zebronics", path: "/images/electrolux-logo.jpg" },
+        { name: "Electrolux", path: "/images/electrolux-logo.jpg" },
     ];
 
     const serviceClients = [
@@ -46,13 +46,34 @@ export default function Home() {
         { name: "Building", path: "/images/building-logo.png" },
     ];
 
-    // Placeholder data for combinedCategories (to fix mobile service section error)
+    // Detailed Data for Media Channels (As requested)
     const combinedCategories = [
-        { t: "Print Media", items: "Newspaper, Magazines, Journals", imagePath: "/images/print.jpg", alt: "Print Media", gradient: "from-gray-500 to-slate-600" },
-        { t: "Broadcast", items: "TV, Radio, Digital", imagePath: "/images/broadcast.jpg", alt: "Broadcast Media", gradient: "from-sky-500 to-cyan-500" },
-        { t: "OOH & Transit", items: "Metro, Airport, Hoardings", imagePath: "/images/ooh.jpg", alt: "Out of Home Media", gradient: "from-orange-500 to-amber-500" },
-        { t: "Cinema", items: "PVR, INOX, Cinepolis", imagePath: "/images/cinema.jpg", alt: "Cinema Advertising", gradient: "from-purple-500 to-pink-500" },
+        { 
+            t: "Newspaper Media", 
+            items: "Premium Positions: Front Page, 3rd Page, 5th Page, Backpage, Sky Bus, Jackets, and normal RHS Ads. Key Publications: HT, TOI, Dainik Jagran, Dainik Bhaskar, Rajasthan Patrika, Hindustan Hindi, Nav Bharat Times.",
+            imagePath: "https://images.pexels.com/photos/1591060/pexels-photo-1591060.jpeg?auto=compress&cs=tinysrgb&w=1600",
+            alt: "Newspaper Media",
+            gradient: "from-gray-500 to-slate-600",
+            stats: { reach: "100M+", outlets: "50+" }
+        },
+        { 
+            t: "Broadcast & Digital Media", 
+            items: "Broadcast (TV & Radio): Television (GEC, News, Music, Movie, and Infotainment); Radio (Spots and Mentions on major stations like Radio City, Red FM, and Big FM etc.). Digital Media: Platforms including Zee5, Jio Hot Star, MX Player, Spotify Etc..",
+            imagePath: "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=1600",
+            alt: "Broadcast and Digital Media",
+            gradient: "from-sky-500 to-cyan-500",
+            stats: { reach: "500M+", platforms: "20+" }
+        },
+        { 
+            t: "OOH & Cinema Advertising", 
+            items: "Out-of-Home (OOH): Airport Branding, Transit Media (Delhi Metro), Hoardings, Mall & Office Media across India. Cinema Advertising: Onscreen and Offscreen options at PVR, INOX, Cinepolis, Carnival, UFO, and single screens.",
+            imagePath: "https://images.pexels.com/photos/436413/pexels-photo-436413.jpeg?auto=compress&cs=tinysrgb&w=1600",
+            alt: "OOH and Cinema Advertising",
+            gradient: "from-orange-500 to-amber-500",
+            stats: { screens: "5000+", cities: "100+" }
+        }
     ];
+
     // Animated counter effect
     useEffect(() => {
         const duration = 2000;
@@ -166,7 +187,9 @@ export default function Home() {
                     <div className="py-20 bg-white">
                         <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
                             <div className="text-center mb-16">
+                                {/* Desktop Heading (text-4xl md:text-5xl) */}
                                 <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Why Choose Media Barter?</h2>
+                                {/* Desktop Paragraph (text-xl) */}
                                 <p className="text-xl text-gray-600 max-w-2xl mx-auto">Transform your excess inventory into strategic media advantage</p>
                                 <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-cyan-500 mx-auto mt-6 rounded-full"></div>
                             </div>
@@ -201,16 +224,19 @@ export default function Home() {
                                     <span className="w-2 h-2 bg-sky-500 rounded-full animate-pulse"></span>
                                     Trusted Media Barter Partner 
                                 </div>
-                                <h1 className="text-4xl font-black text-sky-900 leading-tight mb-4">
+                                {/* Mobile H1: Increased from text-4xl to text-5xl */}
+                                <h1 className="text-5xl font-black text-sky-900 leading-tight mb-4">
                                     Convert Unsold Inventory into 
                                     <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                                         Media Advantage
                                     </span>
                                 </h1>
-                                <p className="text-base text-gray-700 mb-6 leading-relaxed">
+                                {/* Mobile Paragraph: Increased from text-base to text-lg */}
+                                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                     An Advertising company which helps Brands in optimizing their existing products/services and use it to buy Media solutions (ATL/BTL) on Barter. We specialize in providing Media solutions across India in the form of cash/barter. Our goal is to provide an innovative tool to companies where they use their existing excess inventory/services rather than selling at a discounted rates in market to optimally using it to increase the reach of the product through Advertisement on Barter basis.
                                 </p>
                                 <div className="flex flex-wrap gap-3 mb-8 justify-center">
+                                    {/* CTAs kept same for responsiveness */}
                                     <Link to="/contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-bold shadow-lg">
                                         Get Free Consultation
                                     </Link>
@@ -225,7 +251,8 @@ export default function Home() {
                     {/* 2. Key Stats Section */}
                     <div className="py-8 bg-white border-t border-b border-gray-100">
                         <div className="max-w-screen-xl mx-auto px-4">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Our Impact</h3>
+                            {/* Mobile H3: Increased from text-xl to text-2xl */}
+                            <h3 className="text-2xl font-black text-gray-900 mb-4 text-center">Our Impact</h3>
                             <div className="grid grid-cols-2 gap-4">
                                 {[{ label: "Experience", value: `${counter.years}+ yrs`, icon: "⭐" },
                                     { label: "Pan-India", value: "Presence", icon: "🗺️" },
@@ -233,9 +260,12 @@ export default function Home() {
                                     { label: "Facilitation", value: "10% fee", icon: "💰" }]
                                     .map((s, idx) => (
                                         <div key={s.label} className="bg-white p-4 rounded-xl shadow-md border border-sky-100" style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both` }}>
+                                            {/* Icon size kept same (text-2xl) */}
                                             <div className="text-2xl mb-1">{s.icon}</div>
+                                            {/* Label kept small (text-xs) */}
                                             <div className="text-xs text-gray-500 mb-1">{s.label}</div>
-                                            <div className="font-black text-sky-800 text-lg">{s.value}</div>
+                                            {/* Value increased from text-lg to text-xl */}
+                                            <div className="font-black text-sky-800 text-xl">{s.value}</div>
                                         </div>
                                     ))}
                             </div>
@@ -245,7 +275,8 @@ export default function Home() {
                     {/* 3. Media Channels (from Hero Right Grid) */}
                     <div className="py-8 bg-gray-50 border-b border-gray-100">
                         <div className="max-w-screen-xl mx-auto px-4">
-                            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">Media Coverage</h3>
+                            {/* Mobile H3: Increased from text-xl to text-2xl */}
+                            <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">Media Coverage</h3>
                             <div className="grid grid-cols-2 gap-4">
                                 {[{ title: "Print Media", list: "Newspaper • Magazines • Journals", icon: "📰", gradient: "from-gray-500 to-slate-600" },
                                     { title: "Broadcast", list: "TV • Radio • Digital", icon: "📡", gradient: "from-sky-500 to-cyan-500" },
@@ -255,17 +286,40 @@ export default function Home() {
                                         <div key={type.title} className="bg-white rounded-xl p-4 shadow-sm border border-sky-100" style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both` }}>
                                             <div className={`w-10 h-10 bg-gradient-to-br ${type.gradient} rounded-lg flex items-center justify-center text-xl mb-2 shadow-sm`}>{type.icon}</div>
                                             <div className="text-xs text-gray-500 mb-1">{type.title}</div>
-                                            <div className="font-bold text-sky-800 text-sm leading-tight">{type.list}</div>
+                                            {/* List text increased from text-sm to text-base */}
+                                            <div className="font-bold text-sky-800 text-base leading-tight">{type.list}</div>
                                         </div>
                                     ))}
                             </div>
                         </div>
                     </div>
+                    
+                    {/* 4. Media Partners Section (MOVED HERE) */}
+                    <div className="py-16 bg-white">
+                        <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                            <div className="text-center mb-10">
+                                {/* Mobile H3: Increased from text-2xl to text-3xl */}
+                                <h3 className="text-3xl font-black text-gray-900 mb-2">Our Media Partners</h3>
+                                {/* Paragraph increased from text-base to text-lg */}
+                                <p className="text-lg text-gray-600">Working with India's leading media outlets</p>
+                            </div>
+                            <div className="flex flex-wrap justify-center items-center gap-8">
+                                {mediaPartners.map((partner, idx) => (
+                                    <div key={partner} className="px-6 py-3 bg-gradient-to-r from-sky-50 to-cyan-50 rounded-xl border border-sky-200 font-semibold text-sky-700 hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{ animation: `fadeIn 0.6s ease-out ${idx * 0.1}s both` }}>
+                                        {partner}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    {/* END MOVED SECTION */}
 
-                    {/* 4. Our Valued Clients (Logos) */}
-                    <div className="py-12 bg-white border-b border-gray-100">
+
+                    {/* 5. Our Valued Clients (Logos) */}
+                    <div className="py-12 bg-gray-50 border-b border-gray-100">
                         <div className="max-w-screen-xl mx-auto px-4">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Valued Clients</h3>
+                            {/* Mobile H3: Increased from text-2xl to text-3xl */}
+                            <h3 className="text-3xl font-black text-gray-900 mb-6 text-center">Our Valued Clients</h3>
                             <div className="grid grid-cols-3 gap-4 justify-items-center">
                                 {productClients.concat(serviceClients).map((c, idx) => (
                                     <img key={idx} src={c.path} alt={c.name} className="h-10 object-contain opacity-80 hover:opacity-100 transition-opacity" />
@@ -274,12 +328,14 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* 5. Services Section (Detailed Content) */}
+                    {/* 6. Services Section (Detailed Content) */}
                     <div className="py-12 bg-white">
                         <div className="max-w-screen-xl mx-auto px-4">
                             {/* Banner / Title */}
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Services 🛠️</h3>
-                            <p className="text-gray-700 text-base text-center mb-8">
+                            {/* Mobile H3: Increased from text-2xl to text-3xl */}
+                            <h3 className="text-3xl font-black text-gray-900 mb-6 text-center">Our Services 🛠️</h3>
+                            {/* Paragraph increased from text-base to text-lg */}
+                            <p className="text-lg text-gray-700 text-center mb-8">
                                 <strong>What We Do:</strong> Your Partner for Cash and Barter Media Solutions. Media Matrix helps brands optimize their excess products/services and use them to buy media solutions (ATL/BTL) on a barter basis. We specialize in providing solutions across India in the form of cash/barter.
                             </p>
 
@@ -293,21 +349,25 @@ export default function Home() {
                                 ].map((b, idx) => (
                                     <div key={idx} className="bg-white rounded-xl p-4 shadow-sm text-center border border-gray-100">
                                         <div className="text-2xl mb-1">{b.icon}</div>
-                                        <h4 className="font-bold text-gray-900 text-base mb-1">{b.title}</h4>
-                                        <p className="text-gray-600 text-xs">{b.desc}</p>
+                                        {/* Benefit Title increased from text-base to text-lg */}
+                                        <h4 className="font-bold text-gray-900 text-lg mb-1">{b.title}</h4>
+                                        {/* Benefit Desc increased from text-xs to text-sm */}
+                                        <p className="text-gray-600 text-sm">{b.desc}</p>
                                     </div>
                                 ))}
                             </div>
 
                             {/* Media Channels Detail */}
                             <div className="text-center mb-8">
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">Media Channels We Cover 📡</h3>
-                                <p className="text-gray-600 max-w-3xl mx-auto text-sm">
+                                {/* H3 increased from text-xl to text-2xl */}
+                                <h3 className="text-2xl font-black text-gray-900 mb-3">Media Channels We Cover 📡</h3>
+                                {/* Paragraph increased from text-sm to text-base */}
+                                <p className="text-gray-600 max-w-3xl mx-auto text-base">
                                     We offer a full spectrum of media options (ATL/BTL) across India to ensure maximum reach for our clients' products and services.
                                 </p>
                             </div>
                             <div className="grid grid-cols-1 gap-6">
-                                {/* Now using the defined combinedCategories */}
+                                {/* Now using the detailed combinedCategories with Pexels images */}
                                 {combinedCategories.map((c, index) => (
                                     <div key={index} className="group relative bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100">
                                         <div className="relative h-48 overflow-hidden">
@@ -319,10 +379,12 @@ export default function Home() {
                                             <div className={`absolute inset-0 bg-gradient-to-br ${c.gradient} opacity-50`}></div>
                                         </div>
                                         <div className="p-4">
-                                            <h4 className="text-lg font-black text-gray-900 mb-1 text-center">
+                                            {/* Category Title increased from text-lg to text-xl */}
+                                            <h4 className="text-xl font-black text-gray-900 mb-1 text-center">
                                                 {c.t}
                                             </h4>
-                                            <p className="text-gray-600 text-sm text-center">{c.items}</p>
+                                            {/* Category description increased from text-sm to text-base */}
+                                            <p className="text-gray-600 text-base text-center">{c.items}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -330,32 +392,35 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* 6. Full Contact section */}
+                    {/* 7. Full Contact section */}
                     <div className="py-12 bg-sky-50">
                         <div className="max-w-screen-xl mx-auto px-4">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Get In Touch 📞</h3>
+                            {/* Mobile H3: Increased from text-2xl to text-3xl */}
+                            <h3 className="text-3xl font-black text-gray-900 mb-6 text-center">Get In Touch 📞</h3>
                             <Contact /> 
                         </div>
                     </div>
                 </>
             )}
 
-            {/* Media Partners Section (Stays outside conditional rendering, applies to both) */}
-            <div className="py-16 bg-white">
-                <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-10">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Our Media Partners</h3>
-                        <p className="text-gray-600">Working with India's leading media outlets</p>
-                    </div>
-                    <div className="flex flex-wrap justify-center items-center gap-8">
-                        {mediaPartners.map((partner, idx) => (
-                            <div key={partner} className="px-6 py-3 bg-gradient-to-r from-sky-50 to-cyan-50 rounded-xl border border-sky-200 font-semibold text-sky-700 hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{ animation: `fadeIn 0.6s ease-out ${idx * 0.1}s both` }}>
-                                {partner}
-                            </div>
-                        ))}
+            {/* Media Partners Section (Renders here ONLY for Desktop, as it was MOVED in the mobile section) */}
+            {!isMobile && (
+                <div className="py-16 bg-white">
+                    <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
+                        <div className="text-center mb-10">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Our Media Partners</h3>
+                            <p className="text-gray-600">Working with India's leading media outlets</p>
+                        </div>
+                        <div className="flex flex-wrap justify-center items-center gap-8">
+                            {mediaPartners.map((partner, idx) => (
+                                <div key={partner} className="px-6 py-3 bg-gradient-to-r from-sky-50 to-cyan-50 rounded-xl border border-sky-200 font-semibold text-sky-700 hover:shadow-lg transition-all duration-300 transform hover:scale-105" style={{ animation: `fadeIn 0.6s ease-out ${idx * 0.1}s both` }}>
+                                    {partner}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
 
 
             {/* Styles */}
@@ -366,6 +431,11 @@ export default function Home() {
                 @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
                 .animate-fadeInLeft { animation: fadeInLeft 0.8s ease-out; }
                 .animate-fadeInRight { animation: fadeInRight 0.8s ease-out; }
+
+                /* Add a better font stack globally for "attractive" feel */
+                body {
+                    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                }
             `}</style>
 
         </div>
