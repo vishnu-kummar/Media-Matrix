@@ -8,7 +8,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b shadow-md">
       <nav className="max-w-screen-xl mx-auto px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo Container */}
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
               src="/images/logo.jpg"
@@ -16,16 +16,14 @@ export default function Header() {
               className="h-20 object-contain rounded-md shadow-sm border border-gray-200"
             />
             <div className="leading-tight">
-              <div className="text-2xl font-extrabold text-sky-800">
-                MediaMatrix
-              </div>
+              <div className="text-2xl font-extrabold text-sky-800">MediaMatrix</div>
               <div className="text-base text-gray-500 -mt-0.5">
                 Barter Media Solutions
               </div>
             </div>
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop Nav */}
           <div className="hidden lg:flex lg:items-center lg:gap-4">
             <ul className="flex items-center gap-1">
               {[
@@ -52,13 +50,6 @@ export default function Header() {
             </ul>
 
             <div className="flex items-center gap-3">
-              {/* <Link
-                to="#"
-                className="text-base text-gray-700 hover:text-sky-700 px-4 py-2.5 rounded-lg transition duration-300"
-              >
-                Log in
-              </Link> */}
-
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-600 to-orange-800 text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 text-base"
@@ -96,7 +87,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden mt-3 bg-white rounded-lg shadow-md p-4 border">
             <ul className="flex flex-col gap-1">
@@ -124,12 +115,6 @@ export default function Header() {
             </ul>
 
             <div className="mt-3 flex flex-col gap-2">
-              <Link
-                to="#"
-                className="block text-gray-700 py-2 rounded-md text-center text-base"
-              >
-                Log in
-              </Link>
               <Link
                 to="/contact"
                 className="block text-white bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 font-semibold rounded-full text-sm px-5 py-2 text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300"
