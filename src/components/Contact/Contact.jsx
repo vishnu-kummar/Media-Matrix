@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import { useForm } from '@formspree/react';
 
 export default function Contact() {
-  // 1. FORMSPREE INTEGRATION: Replace with your actual Form ID
   const [state, handleSubmit] = useForm("mldazqje"); 
   const submitted = state.succeeded;
 
-  // Local state for controlled inputs (kept for good practice, though Formspree relies on 'name' attributes)
   const [formData, setFormData] = React.useState({
     name: '',
     email: '',
@@ -35,7 +33,6 @@ export default function Contact() {
   ];
 
   const quickLinks = [
-    // 📞 IMPORTANT: Replace the number below with your actual contact number
     { icon: "📞", title: "Quick Call", desc: "Schedule a consultation", action: "Book Call", link: "tel:++91-9070106050" }, 
     { icon: "📧", title: "Email Us", desc: "info@mediamatrix.in", action: "Send Email", link: "mailto:info@mediamatrix.in" },
   ];
@@ -67,121 +64,45 @@ export default function Contact() {
             <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-12">
               Connect with India's leading media barter experts. We'll help you convert excess inventory into valuable media placements.
             </p>
-
-            {/* Quick Contact Stats */}
-            <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
-              {[
-                { value: "< 24hrs", label: "Response Time" },
-                { value: "14+ Years", label: "Experience" },
-                { value: "500+", label: "Happy Clients" },
-                { value: "Pan-India", label: "Coverage" }
-              ].map((stat, idx) => (
-                <div key={idx} className="text-center">
-                  <div className="text-3xl font-black bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 font-semibold">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Action Cards (Centered) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 mb-16 relative z-10">
-        <div className="max-w-lg mx-auto"> 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {quickLinks.map((link, idx) => (
-              <a 
-                key={idx}
-                href={link.link} 
-                className="bg-white rounded-2xl p-6 shadow-xl border border-sky-100 hover:shadow-2xl hover:border-sky-300 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-4xl mb-3">{link.icon}</div>
-                  <h3 className="font-bold text-gray-900 mb-1">{link.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{link.desc}</p>
-                </div>
-                <div className="text-sky-600 font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">
-                  {link.action}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </a>
-            ))}
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          
-          {/* 👈 LEFT COLUMN - RETAINED CONTENT */}
-          <div className="lg:col-span-2 space-y-8">
-            <div>
-              <h2 className="text-4xl font-black text-sky-800 mb-4">
-                Why Partner With Us?
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                We specialize in converting excess inventory into strategic media placements. Let's discuss how barter can maximize your brand's reach.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
 
-            {/* Benefits */}
-            <div className="space-y-4">
-              {[
-                { icon: '⚡', title: 'Quick Response', desc: 'Get answers within 24 hours' },
-                { icon: '🎯', title: 'Expert Consultation', desc: 'Free barter strategy session' },
-                { icon: '🔒', title: 'Confidential', desc: 'Your data is 100% secure' },
-                { icon: '💼', title: 'Dedicated Manager', desc: 'Personal account manager' }
-              ].map((feature, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-sky-50 to-cyan-50 border border-sky-100 hover:shadow-md transition-all duration-300 group"
+          {/* LEFT COLUMN - Quick Info / Intro */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+            <h2 className="text-3xl font-bold text-gray-900">Reach Out to Us</h2>
+            <p className="text-gray-700">
+              Connect with India's leading media barter experts. We'll help you convert excess inventory into valuable media placements.
+            </p>
+
+            <div className="grid grid-cols-1 gap-4">
+              {quickLinks.map((link, idx) => (
+                <a 
+                  key={idx}
+                  href={link.link}
+                  className="bg-white rounded-2xl p-6 shadow-xl border border-sky-100 hover:shadow-2xl hover:border-sky-300 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-sm flex-shrink-0">
-                    {feature.icon}
-                  </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-1">{feature.title}</h4>
-                    <p className="text-sm text-gray-600">{feature.desc}</p>
+                    <div className="text-4xl mb-3">{link.icon}</div>
+                    <h3 className="font-bold text-gray-900 mb-1">{link.title}</h3>
+                    <p className="text-sm text-gray-600 mb-4">{link.desc}</p>
                   </div>
-                </div>
+                  <div className="text-sky-600 font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                    {link.action}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
               ))}
             </div>
-
-            {/* What to Expect */}
-            <div className="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 border border-orange-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="text-2xl">📋</span>
-                What Happens Next?
-              </h3>
-              <ol className="space-y-3 text-gray-700">
-                <li className="flex gap-3">
-                  <span className="font-bold text-orange-500">1.</span>
-                  <span>We review your inquiry within 24 hours</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-bold text-orange-500">2.</span>
-                  <span>Schedule a free consultation call</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-bold text-orange-500">3.</span>
-                  <span>Get a customized barter proposal</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-bold text-orange-500">4.</span>
-                  <span>Start your media campaign journey</span>
-                </li>
-              </ol>
-            </div>
           </div>
-          {/* END LEFT COLUMN */}
 
-          {/* RIGHT COLUMN - Contact Form (Formspree Integrated) */}
+          {/* RIGHT COLUMN - Contact Form */}
           <div className="lg:col-span-3">
             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-sky-100">
               {!submitted ? (
@@ -196,7 +117,6 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  {/* FORM TAG uses Formspree's handleSubmit */}
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Name */}
                     <div>
@@ -258,7 +178,6 @@ export default function Contact() {
                           value={formData.company}
                           onChange={handleChange}
                           placeholder="Your Company"
-                          // Not required
                           className="w-full px-5 py-4 bg-white border-2 border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-100 transition-all duration-300"
                         />
                       </div>
@@ -317,7 +236,6 @@ export default function Contact() {
                   </form>
                 </div>
               ) : (
-                // SUCCESS MESSAGE
                 <div className="text-center py-12">
                   <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg animate-bounce">
                     <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -335,7 +253,6 @@ export default function Contact() {
               )}
             </div>
           </div>
-          {/* END RIGHT COLUMN */}
 
         </div>
       </div>

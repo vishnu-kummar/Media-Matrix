@@ -72,7 +72,7 @@ export default function Header() {
 
             <div className="flex items-center gap-3">
               <Link
-                to="/contact"
+                to="/services"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-600 to-orange-800 text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 text-base"
               >
                 Get Started
@@ -137,7 +137,7 @@ export default function Header() {
 
             <div className="mt-3 flex flex-col gap-2">
               <Link
-                to="/contact"
+                to="/services"
                 className="block text-white bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 font-semibold rounded-full text-sm px-5 py-2 text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300"
               >
                 Get Started
