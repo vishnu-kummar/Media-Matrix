@@ -1,11 +1,32 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { useScrolledPastTop } from "@/hooks/useScrolledPastTop.js";
+
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  
+  // 1. Get the scroll state
+  const scrolled = useScrolledPastTop(50); 
+  
+  // 2. Dynamic Class Logic:
+  // - On ALL screens, we apply the translation based on 'scrolled'.
+  // - On desktop (lg:), we explicitly override the translation back to 0 (visible).
+  const scrollClass = scrolled ? '-translate-y-full' : 'translate-y-0';
+  
+  // 3. The full class string applied to the <header> tag
+  const headerClasses = `
+    sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b shadow-md 
+    transition-transform duration-300 transform 
+    ${scrollClass} 
+    lg:translate-y-0
+  `;
+  // The lg:translate-y-0 ensures the header is always visible on desktop (1024px and up).
+
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b shadow-md">
+    <header className={headerClasses}>
       <nav className="max-w-screen-xl mx-auto px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
