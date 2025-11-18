@@ -36,17 +36,17 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-gray-900 uppercase mb-3">Contact</h4>
             <div className="text-gray-600 text-sm space-y-1">
-              <div>Phone: <span className="font-medium text-gray-800">+91-9070106050</span></div>
-              <div>Alt: <span className="font-medium text-gray-800">+91-9070601050</span></div>
+              {/* <div>Phone: <span className="font-medium text-gray-800">+91-9070106050</span></div>
+              <div>Alt: <span className="font-medium text-gray-800">+91-9070601050</span></div> */}
               <div>Email: <a href="mailto:Mediamatixx18@gmail.com" className="font-medium text-gray-800 hover:underline">info@mediamatrixx.in</a></div>
               <div>Office: Delhi NCR</div>
             </div>
 
-            <div className="mt-4 flex gap-3">
+            {/* <div className="mt-4 flex gap-3">
               <a href="#" className="text-gray-500 hover:text-sky-700">Twitter</a>
               <a href="#" className="text-gray-500 hover:text-sky-700">LinkedIn</a>
               <a href="#" className="text-gray-500 hover:text-sky-700">Facebook</a>
-            </div>
+            </div> */}
           </div>
         </div>
 

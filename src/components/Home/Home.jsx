@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Contact from "../Contact/Contact.jsx"; // Proper import
 
+// ⭐️ IMPORT HELMET ⭐️
+import { Helmet } from 'react-helmet-async';
+
+
 export default function Home() {
     // State for counters
     const [counter, setCounter] = useState({ clients: 0, years: 0, media: 0 });
@@ -178,6 +182,27 @@ export default function Home() {
 
     return (
         <div className="bg-white min-h-screen">
+
+
+<Helmet>
+    <title>Convert Unsold Inventory into Media Advantage | Media Matrixx</title>
+    <meta 
+        name="description" 
+        content="Media Matrixx helps brands convert excess inventory and services into strategic, premium ATL/BTL media solutions across India. Maximize ROI and preserve cash flow with corporate trade experts."
+    />
+    {/* ⭐️ NEW: OPEN GRAPH (SOCIAL SHARING) TAGS ⭐️ */}
+    <meta property="og:title" content="Media Matrixx: Convert Inventory to Media Advantage" />
+    <meta property="og:description" content="India's trusted experts in corporate media barter. Convert your excess inventory into high-value media placements across Print, TV, Radio, and Digital channels." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.mediamatrixx.in/" />
+    {/* Update the image path to your actual social sharing image */}
+    <meta property="og:image" content="https://www.mediamatrixx.in/images/social-share.jpg" /> 
+    <meta name="twitter:card" content="summary_large_image" />
+    {/* Canonical tag should also be included here, although you have a fallback in index.html */}
+    <link rel="canonical" href="https://www.mediamatrixx.in/" />
+</Helmet>
+
+            
 
             {/* Desktop Hero Section: Renders the full HeroContent as defined above */}
             {!isMobile && (
