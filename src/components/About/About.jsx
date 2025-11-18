@@ -2,14 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import { useEffect } from "react";
 
-// ⭐️ IMPORT HELMET ⭐️
-import { Helmet } from 'react-helmet-async';
-
 export default function About() {
 
-// useEffect(() => {
-//         document.title = "About | Media Matrix";
-//     }, []);
+useEffect(() => {
+        document.title = "About | Media Matrix";
+    }, []);
 
     // Define the paths for the full list of client logos
     const productClients = [
@@ -52,18 +49,6 @@ export default function About() {
 
     return (
         <div className={`min-h-screen bg-white ${attractiveFont}`}>
-
-
-            {/* ⭐️ NEW: DYNAMIC SEO METADATA FOR ABOUT PAGE ⭐️ */}
-            <Helmet>
-                <title>Corporate Trade Experts & 14+ Years Experience | Media Matrixx</title>
-                <meta 
-                    name="description" 
-                    content="Learn about Media Matrixx's 14+ years of expertise in corporate trade and media barter. We help B2B brands maximize product value and secure premium advertising in India."
-                />
-            </Helmet>
-
-            
             
             {/* START: REPLICATED HERO BANNER */}
             <div className="relative w-full h-96 bg-cover bg-center overflow-hidden" 

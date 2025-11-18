@@ -1,3 +1,4 @@
+import React, { useEffect } from "react"; // ⭐️ ADD useEffect ⭐️
 // import React from "react";
 // import Header from './components/Header/Header'
 // import Footer from './components/Footer/Footer'
@@ -21,7 +22,7 @@
 //  // outlet is layout function ko as a base rakh lega.
 
 //---------------------------------------------------------------------------------------------------------------
-import React, { useEffect } from "react"; // ⭐️ ADD useEffect ⭐️
+
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import { Outlet } from "react-router-dom";

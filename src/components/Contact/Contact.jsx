@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from '@formspree/react';
 
-// ⭐️ IMPORT HELMET ⭐️
-import { Helmet } from 'react-helmet-async';
-
 export default function Contact() {
   const [state, handleSubmit] = useForm("mldazqje"); 
   const submitted = state.succeeded;
@@ -17,9 +14,9 @@ export default function Contact() {
     message: ''
   });
 
-  // useEffect(() => {
-  //   document.title = "Contact | Media Matrix";
-  // }, []);
+  useEffect(() => {
+    document.title = "Contact | Media Matrix";
+  }, []);
 
   const handleChange = (e) => {
      setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,18 +39,6 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white">
-
-
-{/* ⭐️ NEW: DYNAMIC SEO METADATA FOR CONTACT PAGE ⭐️ */}
-        <Helmet>
-            <title>Contact Media Matrixx | Convert Inventory into Media Advertising</title>
-            <meta 
-                name="description" 
-                content="Get a free consultation from Media Matrixx's corporate trade experts. Contact us today to start converting your excess product inventory into premium media advertising placements."
-            />
-        </Helmet>
-
-
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-sky-50 via-white to-cyan-50 overflow-hidden">
         <div className="absolute inset-0 opacity-5" style={{

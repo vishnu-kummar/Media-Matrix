@@ -1,15 +1,12 @@
 import React, { useState,useEffect } from "react";
 
-// ⭐️ IMPORT HELMET ⭐️
-import { Helmet } from 'react-helmet-async';
-
 export default function Services() {
     const [activeWorkflow, setActiveWorkflow] = useState(null);
     const [hoveredService, setHoveredService] = useState(null);
 
-    // useEffect(() => {
-    //         document.title = "Service | Media Matrix";
-    //     }, []);
+    useEffect(() => {
+            document.title = "Service | Media Matrix";
+        }, []);
 
     const services = [
         {
@@ -112,18 +109,6 @@ export default function Services() {
 
     return (
         <div className="min-h-screen bg-white font-sans">
-
-
-{/* ⭐️ NEW: DYNAMIC SEO METADATA FOR SERVICES PAGE ⭐️ */}
-            <Helmet>
-                <title>Our Services | Media Barter, Buying, and Creative Solutions</title>
-                <meta 
-                    name="description" 
-                    content="Explore Media Matrixx's specialized services: Media Barter Solutions to convert excess inventory into ATL/BTL media, Cash/Barter Media Buying, Sampling & Gifting, and Innovative Media options."
-                />
-            </Helmet>
-
-
             {/* Hero Banner with Modern Overlay */}
             <div className="relative w-full h-96 bg-cover bg-center overflow-hidden" 
                 style={{ 
