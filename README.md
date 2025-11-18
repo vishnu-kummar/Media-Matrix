@@ -1,12 +1,24 @@
-# React + Vite
+✨ Media Matrix Corporate Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌐 Live URL
+**View the Live Website Here:** [www.mediamatrixx.in](https://www.mediamatrixx.in)
 
-Currently, two official plugins are available:
+📄 Project Overview
+This project is the official corporate website for Media Matrix , a specialized advertising company based in Delhi NCR. The company focuses on innovative Media Barter solutions , allowing brands to exchange existing excess inventory or services for advertising solutions (ATL/BTL) instead of selling inventory at discounted rates.The objective of the website was to create a modern, professional, and clear digital presence that educates potential clients on the Media Barter process and showcases the company’s extensive expertise and client portfolio.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛠️ Technical Stack
+Frontend Framework: React.js ⚛️ (running via Vite ⚡)
 
-## Expanding the ESLint configuration
+Purpose: Utilized for a high-performance, component-based user interface, ensuring a scalable and reactive web experience.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Build Tool: Vite ⚡
+
+Purpose: Chosen for its extremely fast development server and optimized build process, which dramatically improves developer experience and production readiness.
+
+Styling: Tailwind CSS 🎨
+
+Purpose: Employed as a utility-first framework for rapid, flexible, and responsive styling, ensuring the website looks professional and functions flawlessly across all devices.
+
+Deployment: Vercel ☁️
+
+Purpose: Used for seamless Continuous Integration/Continuous Deployment (CI/CD), providing a global CDN for fast loading and automatic deployment upon every commit to the main branch.
