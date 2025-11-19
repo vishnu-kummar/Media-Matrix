@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link } from "react-router-dom"; 
 import { useEffect } from "react";
+import { setPageSEO } from "../../utils/seo.js";
 
 export default function About() {
 
 useEffect(() => {
-        document.title = "About | Media Matrix";
-    }, []);
+  setPageSEO('about');
+}, []);
 
     // Define the paths for the full list of client logos
     const productClients = [

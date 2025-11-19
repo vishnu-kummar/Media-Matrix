@@ -1,13 +1,13 @@
 import React, { useState,useEffect } from "react";
+import { setPageSEO } from "../../utils/seo.js";
 
 export default function Services() {
     const [activeWorkflow, setActiveWorkflow] = useState(null);
     const [hoveredService, setHoveredService] = useState(null);
 
-    useEffect(() => {
-            document.title = "Service | Media Matrix";
-        }, []);
-
+   useEffect(() => {
+  setPageSEO('services');
+}, []);
     const services = [
         {
             title: "Media Barter Solutions",

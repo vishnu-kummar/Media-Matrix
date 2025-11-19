@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Contact from "../Contact/Contact.jsx"; // Proper import
+import Contact from "../Contact/Contact.jsx"; 
+import { setPageSEO } from "../../utils/seo.js";
 
 export default function Home() {
+
+
+useEffect(() => {
+    setPageSEO('home');
+  }, []);
+
     // State for counters
     const [counter, setCounter] = useState({ clients: 0, years: 0, media: 0 });
 
@@ -122,7 +129,7 @@ export default function Home() {
                         </div>
                         <h1 className="text-5xl md:text-6xl font-black text-sky-900 leading-tight mb-6">
                             Convert Unsold Inventory into 
-                            <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                            <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent pb-2">
                                 Media Advantage
                             </span>
                         </h1>

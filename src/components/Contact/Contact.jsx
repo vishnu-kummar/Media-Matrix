@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from '@formspree/react';
+import { setPageSEO } from "../../utils/seo.js";
 
 export default function Contact() {
   const [state, handleSubmit] = useForm("mldazqje"); 
@@ -14,9 +15,9 @@ export default function Contact() {
     message: ''
   });
 
-  useEffect(() => {
-    document.title = "Contact | Media Matrix";
-  }, []);
+useEffect(() => {
+  setPageSEO('contact');
+}, []);
 
   const handleChange = (e) => {
      setFormData({ ...formData, [e.target.name]: e.target.value });
