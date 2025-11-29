@@ -194,15 +194,6 @@ export default function Services() {
                                 {s.title}
                             </h4>
                             <p className="text-gray-600 leading-relaxed">{s.desc}</p>
-
-                            {hoveredService === index && (
-                                <div className="mt-4 flex items-center text-sky-600 font-semibold animate-slideIn">
-                                    <span className="mr-2">Explore</span>
-                                    <svg className="w-5 h-5 animate-bounce-right" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </div>
-                            )}
                         </div>
                     ))}
                 </div>

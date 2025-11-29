@@ -137,7 +137,7 @@ useEffect(() => {
                             An Advertising company which helps Brands in optimizing their existing products/services and use it to buy Media solutions (ATL/BTL) on Barter. We specialize in providing Media solutions across India in the form of cash/barter. Our goal is to provide an innovative tool to companies where they use their existing excess inventory/services rather than selling at a discounted rates in market to optimally using it to increase the reach of the product through Advertisement on Barter basis.
                         </p>
                         <div className="flex flex-wrap gap-4 mb-10">
-                            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                            <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-600 to-orange-800 text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 text-base">
                                 Get Free Consultation
                             </Link>
                             <Link to="/services" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-sky-300 text-sky-800 font-bold hover:bg-sky-50 transition-all duration-300">
