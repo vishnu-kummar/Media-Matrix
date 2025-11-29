@@ -244,7 +244,7 @@ useEffect(() => {
                                 </p>
                                 <div className="flex flex-wrap gap-3 mb-8 justify-center">
                                     {/* CTAs kept same for responsiveness */}
-                                    <Link to="/contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-bold shadow-lg">
+                                    <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-600 to-orange-800 text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300 text-base">
                                         Get Free Consultation
                                     </Link>
                                     <Link to="/services" className="inline-flex items-center gap-2 px-5 py-3 rounded-full border-2 border-sky-300 text-sky-800 text-sm font-bold">
